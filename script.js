@@ -3,25 +3,45 @@ const counterEl = document.getElementById('counter');
 const incrementEl = document.getElementById('increment');
 const decrementEl = document.getElementById('decrement');
 
+// action identifier
+const INCREMENT = 'increment';
+const DECREMENT = 'decrement';
 
 // initial state
 const initialState = {
     value: 0,
 }
 
+// action creator
+const increment = (value) => {
+    return {
+        type: INCREMENT,
+        payload: value,
+    }
+}
+    
+const decrement = (value) => {
+    return {
+        type: DECREMENT,
+        payload: value,
+    }
+    }
+
+
+
 // reducer function
 function counterReducer(state = initialState, action) {
     
-    if (action.type === 'increment') {
+    if (action.type === INCREMENT) {
         return {
             ...state,
-            value: state.value + 1,
+            value: state.value + action.payload,
         };
     }
-    else if (action.type === 'decrement') {
+    else if (action.type === DECREMENT) {
         return {
             ...state,
-            value: state.value - 1,
+            value: state.value - action.payload,
         };
     }
     else {
@@ -33,6 +53,7 @@ function counterReducer(state = initialState, action) {
 // create store
 const store = Redux.createStore(counterReducer);
 
+// update ui
 const render = () => {
     const state = store.getState();
     counterEl.innerText = state.value.toString();
@@ -43,13 +64,9 @@ store.subscribe(render);
 // button lick listener
 
 incrementEl.addEventListener('click', () => {
-    store.dispatch({
-        type: 'increment'
-    })
+    store.dispatch(increment(13))
 });
 
 decrementEl.addEventListener('click', () => {
-    store.dispatch({
-        type: 'decrement'
-    })
+    store.dispatch(decrement(9))
 })
