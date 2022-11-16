@@ -1,4 +1,5 @@
 import Counter from "./components/Counter";
+import NewCounter from "./components/NewCounter";
 
 export default function App() {
     return (
@@ -10,7 +11,7 @@ export default function App() {
             <div className="max-w-md mx-auto mt-10 space-y-5">
                 <Counter />
                 <Counter />
-                <Counter />
+                <NewCounter/>
             </div>
         </div>
     );
