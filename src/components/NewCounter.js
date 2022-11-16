@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 
 const NewCounter = () => {
-    const [count,setCount]=useState(100);
+    const [count,setCount]=useState(10);
     const increment = ()=> {
         setCount((prevCount)=> prevCount+10)
     }
