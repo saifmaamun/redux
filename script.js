@@ -114,7 +114,7 @@ function counterReducer(state = initialState, action) {
     if (action.type === RESETVALUE) {
         const id =action.payload
         return state.map((counter)=>{
-            
+             
                 return {
                         ...counter,
                          value: 0,
@@ -140,7 +140,9 @@ const render = () => {
           class="p-4 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow"
         >
           <div id=${counter.id} class="text-2xl font-semibold">${counter.value}</div>
+          <input  class="text-black border" value="0" type="text"/>
           <div class="flex space-x-3">
+          
             <button
               class="bg-indigo-400 text-white px-3 py-2 rounded shadow"
               onClick="incrementHandler(${counter.id})"
